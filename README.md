@@ -7,6 +7,30 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+1. **Instalar dependências do Composer:**
+   ```bash
+   composer install
+
+2. **Iniciar o banco de dados:**
+   ```bash
+   php artisan migrate
+
+3. **Rodar seed do sistema e popular tabelas necessárias:**
+   ```bash
+   php artisan db:seed
+
+4. **Instalar dependências do npm:**
+   ```bash
+   npm install
+
+5. **Inicializar servidor do Laravel:**
+   ```bash
+   php artisan serve
+
+6. **Inicializar servidor do npm:**
+   ```bash
+   npm run dev
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
