@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 class TipoSetor extends Model
 {
@@ -23,14 +25,20 @@ class TipoSetor extends Model
 
     protected $keyType = 'string';
     public $incrementing = false;
+    protected $table = 'tipo_setor';
 
 
     protected $fillable = [
         'nome',
+        'empresa_id'
     ];
 
 
     public function setor(): HasMany{
         return $this->hasMany(Setor::class);
+    }
+
+    public function empresa(): BelongsTo{
+        return $this->belongsTo(Empresa::class);
     }
 }

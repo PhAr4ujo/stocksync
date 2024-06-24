@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Empresa extends Model
@@ -27,13 +28,21 @@ class Empresa extends Model
 
     protected $keyType = 'string';
     public $incrementing = false;
-
+    protected $table = 'empresa';
 
     protected $fillable = [
-        'nome'
+        'name'
     ];
 
     public function setor(): HasMany{
         return $this->hasMany(Setor::class);
+    }
+
+    public function tipoSetor(): HasMany{
+        return $this->hasMany(TipoSetor::class);
+    }
+
+    public function userEmpresa(): HasMany{
+        return $this->hasMany(UserEmpresa::class);
     }
 }

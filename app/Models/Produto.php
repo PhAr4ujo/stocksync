@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 class Produto extends Model
 {
@@ -24,6 +25,7 @@ class Produto extends Model
 
    protected $keyType = 'string';
    public $incrementing = false;
+   protected $table = 'produto';
 
 
     protected $fillable = [

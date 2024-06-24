@@ -6,6 +6,7 @@ use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
@@ -24,12 +25,29 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $userId = $this->route('user');
         return [
-            'nome' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'cpf' => 'required|integer|unique:users',
-            'cadastro' => 'required|integer|unique:users',
-            'password' => 'required|integer|min:4|confirmed'
+            'nome' => 'sometimes|required|string|max:255',
+            'email' => [
+                'sometimes',
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore($userId),
+            ],            
+            'cpf' => [
+                'nullable',
+                'integer',
+                Rule::unique('users')->ignore($userId),
+            ],
+            'cadastro' => [
+                'nullable', 
+                'integer',
+                Rule::unique('users')->ignore($userId),
+            ],
+            'password' => 'sometimes|required|integer|min:4|confirmed',
+            
         ];
     }
 

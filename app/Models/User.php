@@ -37,10 +37,9 @@ class User extends Authenticatable
 
 
     protected $fillable = [
-        'nome',
+        'name',
         'email',
         'cpf',
-        'cadastro',
         'password',
     ];
 
@@ -68,5 +67,9 @@ class User extends Authenticatable
         return $this->hasMany(UserSetor::class);
     }
     
+    public function userEmpresa(): HasMany{
+        return $this->hasMany(UserEmpresa::class);
+    }
+
 }
 

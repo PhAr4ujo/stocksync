@@ -16,6 +16,8 @@ class UserSetor extends Model
         'permissao_id',
     ];
 
+    protected $table = 'usuario_setor';
+
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);
     }
